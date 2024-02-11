@@ -74,7 +74,7 @@ exports.getTransactionDeatils = async (req, res) => {
             // 4.Output the result
             extractedData.push({ hash, from, to, eth, time });
         });
-
+        extractedData.reverse();
         return res.json({ success: true, address, transactions:extractedData });
     }
     catch(error){
