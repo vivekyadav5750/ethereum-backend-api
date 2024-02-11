@@ -31,6 +31,7 @@ exports.getAddressDetails = async (req, res) => {
         const balanceInUsd2Decimal = balanceInUsd.toFixed(2);
         console.log("balance in usd 2 decimal : ",balanceInUsd2Decimal);
 
+<<<<<<< HEAD
         
         // 5. Fetch Ethereum transactions of given address
         const transactionsResponse = await axios.get(`https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${apiKey}`);
@@ -60,6 +61,15 @@ exports.getAddressDetails = async (req, res) => {
         // console.log(extractedData);
 
         return res.json({ success: true, address, balance:balanceInUsd2Decimal, transactions:extractedData });
+=======
+        // 5. Fetch Ethereum transactions of given address
+        const transactionsResponse = await axios.get(`https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${apiKey}`);
+        const transactions = transactionsResponse.data.result;
+        console.log("Transactions : ",transactions);
+
+        // res.json({ success: true, address, balanceInEth });
+        return res.json({ success: true, address, balanceInUsd2Decimal, transactions });
+>>>>>>> c032bcabb4d25d1952f2ddfc66f64d798b65f552
 
     }
     catch(error){
